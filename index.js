@@ -25,7 +25,7 @@ app.post(process.env.WEBHOOK_PATH || '/deploy', (req, res) => {
 
   let projectDir = path.join(process.env.PROJECTS_ROOT, name);
 
-  childprocess.exec(`cd ${projectDir} && git pull`);
+  childprocess.exec(`cd ${projectDir} && git pull --recurse-submodules`);
 
   const date = new Date();
   console.log(`${projectDir} pulled at ${date.toString()} !`);
